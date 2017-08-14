@@ -1,112 +1,327 @@
-*{overflow-x: hidden;}
-      .html{width:100%;height:100%; }
-      .topbar{
-        overflow:hidden;
-        height:20%;
-        width:100%; 
-        background-color:#337ab7;
-        display: inline-block;
-      }
+*{
+  overflow-x: hidden;
+}
+.html{width:100%;
+  height:100%; 
+}
+.topbar{
+  overflow:hidden;
+  height:20%;
+  width:100%; 
+  background-color:#337ab7;
+  display: inline-block;
+}
+a{
+  color:white;
+}
+a:hover { 
+  color: grey;
+}
+#logo{
+  width:80%;
+  margin-top:25%;
+  margin-left:20%;
+}
+#profilepic{
+  width:80%;
+  margin-top:25%;
+  margin-left:20%;
+}
+.homebutton{
+  float:left; 
+  position: fixed ;
+  bottom: 0%;
+  left: 0%;
+  height:10%; 
+  width:20%;
+  border:0px;
+  border-radius: 0px;
+}
+.logout{
+  float:right; 
+  position: fixed ;
+  bottom: 0%;
+  right: 0%;
+  height:10%; 
+  width:20%;
+  border:0px;
+  border-radius: 0px;
+}
+.home{
+  float:right; 
+  position: fixed ;
+  top: 1%;
+  right: 19%;
+}
+.profile{
+  float:right; 
+  position: fixed ;
+  bottom: 0%;
+  right: 20%;
+  height:10%; 
+  width:20%;
+  border:0px;
+  border-radius: 0px;
+}
+.calendar{
+  float:left; 
+  position: fixed ;
+  bottom: 0%;
+  right: 40%;
+  height:10%; 
+  width:20%;
+  border:0px;
+  border-radius: 0px;
+}
+.espp{
+  float:left; 
+  position: fixed ;
+  bottom: 0%;
+  left: 20%;
+  height:10%; 
+  width:20%;
+  border:0px;
+  border-radius: 0px;
+}
+.notifications{
+  width: 40px; 
+  position: fixed; 
+  float: right; 
+  right: 02.5%; 
+  top: 1%;
+}
+   .notificationsbar{
+      background-color: white;
+      position: absolute;
+      right: 02.5%;
+      width:50%;
+      height:30%;
+      background-color: #2c3e50;
+      border-radius: 15px;
+      top:1%;
+    }
+    .notirow{
+      height:100px;
+    }
+.circle {
+  color:white;
+  z-index: 99;
+  float: right;
+  right: 02.5%;
+  top: 1%;
+  position:absolute;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px; 
+  background-color: red;
+  /* width and height can be anything, as long as they're equal */
+}
+.hrlinkbutton{
+  width:140px;
+}
+.button{
+  height:20%;
+  margin-left: 8%;
+  margin-bottom: 5%;
+  border-radius: 20px 20px;
+}
+.leftbar{
+  width:30%; 
+  height:100%;
+  display: inline-block;
+}
+.rightbar{
+  display:inline-block;
+  vertical-align: top;
+  width:60%;
+  margin-top: 12%;
+  margin-left: 7%;
+}
+.title{
+  font-size: 2em;
+  text-align: top;
+  margin-top: 30%;
+  width:100%;
+  color: white;
+}
+.content{
+  margin: 10px 10px;
+  padding-top: 10%; 
+  color: white;
+}
+.login{
+  margin: 10px 10px; 
+  color:white;
+}
+body{
+  margin:0px;
+  background-color: #2c3e50;
+}
+table{
+  color:white;
+  width:10px;
+}
+@media only screen and (min-device-width: 768px) {
+    .notifications{
+      width: 40px;
+      position: absolute;
+      float: right;
+      right: 20.5%;
+      top: 1%;
+      z-index:98;
+    }
+    .notificationsbar{
+      background-color: white;
+      position: absolute;
+      right: 20.5%;
+      width:20%;
+      height:30%;
+      background-color: #2c3e50;
+      border-radius: 15px;
+      top:1%;
+    }
+    .notirow{
+      height:100px;
+    }
+    .circle {
+      z-index: 99;
+      float: right;
+      right: 20.5%;
+      top: 1%;
+      position:absolute;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px; 
+      background-color: red;
+    }
+    .homebutton{
+      float:left; 
+      position: absolute;
+      top: 275px;
+      left: 20%;
+      height:5%; 
+      width:12%;
+      border:0px;
+      border-radius: 0px;
+      border-top:1px solid #2c3e50;
+    }
+    .logout{float:right; 
+      position: absolute;
+      top: 275px;
+      right: 20%;
+      height:5%; 
+      width:12.5%;
+      border:0px;
+      border-radius: 0px;
+      border-top:1px solid #2c3e50;
+    }
+    .profile{float:right; 
+      position: absolute;
+      top: 275px;
+      right: 32.05%;
+      height:5%; 
+      width:12%;
+      border:0px;
+      border-radius: 0px;
+      border-top:1px solid #2c3e50;
+    }
+    .calendar{
+      float:left; 
+      position: absolute;
+      top: 275px;
+      left: 44%;
+      height:5%; 
+      width:12%;
+      border:0px;
+      border-radius: 0px;
+      border-top:1px solid #2c3e50;
+    }
+    .espp{
+      float:left; 
+      position: absolute;
+      top: 275px;
+      left: 32%;
+      height:5%; 
+      width:12%;
+      border:0px;
+      border-radius: 0px;
+      border-top:1px solid #2c3e50;
+    }
 
-      a{color:white;}
-
-      a:hover { color: grey;}
-      #logo{
-        width:80%;
-        margin-top:25%;
-        margin-left:20%;
-      }
-      #profilepic{
-        width:80%;
-        margin-top:25%;
-        margin-left:20%;
-      }
-      .homebutton{float:left; position: fixed ;bottom: 0%;left: 0%;height:10%; width:20%;border:0px;border-radius: 0px;}
-      .logout{float:right; position: fixed ;bottom: 0%;right: 0%;height:10%; width:20%;border:0px;border-radius: 0px;}
-      .home{float:right; position: fixed ;top: 1%;right: 19%;}
-      .profile{float:right; position: fixed ;bottom: 0%;right: 20%;height:10%; width:20%;border:0px;border-radius: 0px;}
-      .calendar{float:left; position: fixed ;bottom: 0%;right: 40%;height:10%; width:20%;border:0px;border-radius: 0px;}
-      .espp{float:left; position: fixed ;bottom: 0%;left: 20%;height:10%; width:20%;border:0px;border-radius: 0px;}
-      .notifications{width: 40px; position: fixed; float: right; right: 02.5%; top: 1%;}
-       .circle {
-        color:white;
-        z-index: 99;
-        float: right;
-        right: 02.5%;
-        top: 1%;
-        position:absolute;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px; 
-        background-color: red;
-        /* width and height can be anything, as long as they're equal */
-      }
-      .hrlinkbutton{width:140px;}
-
-      .button{height:20%;margin-left: 8%;margin-bottom: 5%;border-radius: 20px 20px;}
-      .leftbar{width:30%; height:100%;display: inline-block;}
-      .rightbar{display:inline-block;vertical-align: top;width:60%;margin-top: 12%;margin-left: 7%}
-      .title{font-size: 2em;text-align: top;margin-top: 30%;width:100%;color: white;}
-      .content{margin: 10px 10px;padding-top: 10%; color: white;}
-      .login{margin: 10px 10px; color:white;}
-      body{margin:0px;background-color: #2c3e50}
-      table{color:white;width:10px;}
-      @media only screen and (min-device-width: 768px) {
-      .notifications{width: 40px;position: absolute;float: right;right: 20.5%;top: 1%;}
-      .circle {
-        z-index: 99;
-        float: right;
-        right: 20.5%;
-        top: 1%;
-        position:absolute;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px; 
-        background-color: red;
-        /* width and height can be anything, as long as they're equal */
-      }
-      .homebutton{float:left; position: absolute;top: 275px;left: 20%;height:5%; width:12%;border:0px;border-radius: 0px;border-top:1px solid #2c3e50;}
-      .logout{float:right; position: absolute;top: 275px;right: 20%;height:5%; width:12.5%;border:0px;border-radius: 0px;border-top:1px solid #2c3e50;}
-      .profile{float:right; position: absolute;top: 275px;right: 32.05%;height:5%; width:12%;border:0px;border-radius: 0px;border-top:1px solid #2c3e50;}
-      .calendar{float:left; position: absolute;top: 275px;left: 44%;height:5%; width:12%;border:0px;border-radius: 0px;border-top:1px solid #2c3e50;}
-      .espp{float:left; position: absolute;top: 275px;left: 32%;height:5%; width:12%;border:0px;border-radius: 0px;border-top:1px solid #2c3e50;}
-
-      .toolbar{margin-left: 20%;
-          margin-right:20%;
-          top:300px;
-        }
+    .toolbar{
+      margin-left: 20%;
+      margin-right:20%;
+      top:300px;
+    }
 
 
-        .topbar{
-          height:300px;
-          width:60%;
-          margin-left: 20%;
-          margin-right:20%;
-        }
-        .login{margin-left: 25%;margin-right: 25%;margin-top: 3%;}
-        
+    .topbar{
+      height:300px;
+      width:60%;
+      margin-left: 20%;
+      margin-right:20%;
+    }
+    .login{
+      margin-left: 25%;
+      margin-right: 25%;
+      margin-top: 3%;
+    }
+    
 
-        #logo{
-          margin-top:9%;
-          margin-left:10%;
-        }
-        #profilepic{
-          width:12%;
-        
-          bottom:75%;
-          margin-left:30%;
-        }
-      /*.logout{float:right; position: absolute;top: 1%;right: 20.45%;width:5%;height:5%;}*/
-      .home{float:right; position: absolute;top: 1%;right: 23.93%;}
+    #logo{
+      margin-top:9%;
+      margin-left:10%;
+    }
+    #profilepic{
+      width:12%;
+    
+      bottom:75%;
+      margin-left:30%;
+    }
+    .home{
+      float:right; 
+      position: absolute;
+      top: 1%;
+      right: 23.93%;
+    }
+    .content{
+      margin-left: 20%;
+      margin-right: 20%;
+      margin-top: 0%;
+      background-color: #34495e;
+      padding-left:11%;
+      padding-right:10%;
+      padding-top:5%; 
+      padding-bottom: 5%
+    }
+    .leftbar{
+      width:30%; 
+      height:100%;
+      display: inline-block;
+    }
+    .rightbar{
+      display:inline-block;
+      vertical-align: top;
+      width:60%;
+      margin-top: 7%;
+    }
+    .title{
+      font-size: 5em;
+      text-align: top;
+      margin-top: 20%;
+      margin-left: 6%;
+      width:100%;
+      color: white;
+    }
+    .ui-widget{
+      width:60%;
+      margin-left: 20%;
+    }
+    .button{
+      height:25%;
+      margin-left: 10%;
+      margin-bottom: 5%;
+      border-radius: 20px 20px;
+    }
+}
 
-
-        .content{margin-left: 20%;margin-right: 20%;margin-top: 0%;background-color: #34495e;padding-left:11%;padding-right:10%;padding-top:5%; padding-bottom: 5%}
-
-        .leftbar{width:30%; height:100%;display: inline-block;}
-        .rightbar{display:inline-block;vertical-align: top;width:60%;margin-top: 7%;}
-        .title{font-size: 5em;text-align: top;margin-top: 20%;margin-left: 6%;width:100%;color: white;}
-        .ui-widget{width:60%;margin-left: 20%;}
-        .button{height:25%;margin-left: 10%;margin-bottom: 5%;border-radius: 20px 20px;}
-      }
-
-     

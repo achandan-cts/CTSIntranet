@@ -14,8 +14,6 @@ var UserSchema = new mongoose.Schema({
 	 role:{}
 })
 
-
-
 UserSchema.plugin(uniqueValidator);
 
 UserSchema.methods.addBcrypt= function(input){

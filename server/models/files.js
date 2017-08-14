@@ -9,6 +9,4 @@ var FileSchema = new mongoose.Schema({
 	 uploadedby: { type: String, required: false, unique: false}
 })
 
-
-
 var File = mongoose.model('File', FileSchema); // We are setting this Schema in our Models as 'User'

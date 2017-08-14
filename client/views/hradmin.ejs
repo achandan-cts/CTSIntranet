@@ -3,73 +3,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>CTS Intranet</title>
-    <script>
-        $( function() {
-          $( "#accordion" ).accordion();
-        } );
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $(".notificationsbar").hide();
+          $(".notifications").click(function(){
+            $(".notificationsbar").fadeToggle(250);
+          })
+          $(".circle").click(function(){
+            $(".notificationsbar").fadeToggle(250);
+          })
+      })
     </script>
-
+    <title>CTS Intranet</title>
   </head>
   <body>
-    <div class="topbar">
-
-      
-
-      <div class="leftbar">
-        <a href="/home"><img src="/images/logo.png" id="logo"></a>
+      <div class="topbar">
+          <div class="leftbar">
+              <a href="/home"><img src="/images/logo.png" id="logo"></a>
+          </div>
+          <div class="rightbar">
+              <img src ="/images/notifications.png" class="notifications">
+             <div class="notificationsbar">  
+               <div class="table-responsive">
+                   <table class="table notitable">
+                       <tr class="notirow">
+                               <td>Notification Number one</td>
+                       </tr>
+                       <tr class="notirow">
+                               <td>Notification Number two</td>
+                       </tr>
+                       <tr class="notirow">
+                               <td>Notification Number three</td>
+                       </tr>
+                   </table>
+               </div>
+             </div>
+              <span class="title"> CTS Intranet</span>
+          </div>
       </div>
-      <div class="rightbar">
-      <img src ="/images/notifications.png" class="notifications">
-      <span class="title"> CTS Intranet</span>
+      <div class="content">
+          <div class="toolbar">
+              <a href="/logout"><button type="submit" class="btn btn-primary btn-xs logout">Logout</button></a>
+              <a href="/home"><button type="submit" class="btn btn-primary btn-xs homebutton">Home</button></a>
+              <a href="/profile"><button type="submit" class="btn btn-primary btn-xs profile">Profile</button></a>
+              <a href="/calendar"><button type="submit" class="btn btn-primary btn-xs calendar">Calendar</button></a>
+              <a href="/espp"><button type="submit" class="btn btn-primary btn-xs espp">ESPP</button></a>
+          </div>
+          <div class="circle"><p class="text-center"></p></div>
+          <a href="/hrlinkupload"><button class="btn-primary btn-xs hrlinkbutton">Upload an HR Link</button></a><br>
+          <a href="/hrformupload"><button class="btn-primary btn-xs hrlinkbutton">Upload an HR File</button></a><br>
+          <h2>Links:</h2><br><br>
+              <% for (var x in links) { %>
+                    <div class="formdiv">
+                        <a href="<%=links[x].path %>"><%= links[x].linkname %></a>
+                    </div>
+                    <form action="/removelink" method="post">
+                        <input type="hidden" name="_id" value=<%= links[x]._id %> >
+                        <button type="submit" class="btn-danger btn-xs">Remove Link</button>
+                    </form>
+              <% }%>
+          <h3>Files:</h3>
+          <% for (var y in files) { %>
+              <div class="formdiv">
+                  <a href="<%=files[y].path %>"><%= files[y].filename %></a>
+                  <a class="preview"> - Preview</a>
+                  <form action="/removefile" method="post">
+                      <input type="hidden" name="_id" value=<%= files[y]._id %>>
+                      <button type="submit" class="btn-danger btn-xs">Remove File</button>
+                  </form>
+              </div>
+          <% }%>
       </div>
-    </div>
-    <div class="content">
-       <div class="toolbar">
-          <a href="/logout"><button type="submit" class="btn btn-primary btn-xs logout">Logout</button></a>
-          <a href="/home"><button type="submit" class="btn btn-primary btn-xs homebutton">Home</button></a>
-          <a href="/profile"><button type="submit" class="btn btn-primary btn-xs profile">Profile</button></a>
-          <a href="/calendar"><button type="submit" class="btn btn-primary btn-xs calendar">Calendar</button></a>
-          <a href="/espp"><button type="submit" class="btn btn-primary btn-xs espp">ESPP</button></a>
-       </div>
-      <div class="circle"><p class="text-center"></p></div>
-       <a href="/hrlinkupload"><button class="btn-primary btn-xs hrlinkbutton">Upload an HR Link</button></a><br>
-       <a href="/hrformupload"><button class="btn-primary btn-xs hrlinkbutton">Upload an HR File</button></a><br>
-    
-    <h2>Links:</h2></a><br><br>
-        <% for (var x in links) { %>
-      <div class="formdiv">
-        <a href="<%=links[x].path %>"><%= links[x].linkname %></a>
-        </div>
-        <form action="/removelink" method="post">
-         <input type="hidden" name="_id" value=<%= links[x]._id %> >
-         <button type="submit" class="btn-danger btn-xs">Remove Link</button>
-         </form>
-   
-    <% }%>
-
-    <h3>Files:</h3>
-      <% for (var y in files) { %>
-      <div class="formdiv">
-        <a href="<%=files[y].path %>"><%= files[y].filename %></a>
-        <a class="preview"> - Preview</a>
-        <form action="/removefile" method="post">
-         <input type="hidden" name="_id" value=<%= files[y]._id %>>
-         <button type="submit" class="btn-danger btn-xs">Remove File</button>
-         </form>
-        </div>
-   
-    <% }%>
-
- 
-    
-
-    </div>
-
-
   </body>
 </html>
