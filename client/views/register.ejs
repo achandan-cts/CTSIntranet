@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>CTS Intranet</title>
+    <script>
+        $( function() {
+          $( "#accordion" ).accordion();
+        } );
+    </script>
+
+
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="leftbar">
+        <a href="/home"><img src="/images/logo.png" id="logo"></a>
+      </div>
+      <div class="rightbar">
+      <img src ="/images/notifications.png" class="notifications">
+      <span class="title"> CTS Intranet</span>
+      </div>
+    </div>
+    <div class="content">
+       <div class="toolbar">
+          <a href="/logout"><button type="submit" class="btn btn-primary btn-xs logout">Logout</button></a>
+          <a href="/home"><button type="submit" class="btn btn-primary btn-xs homebutton">Home</button></a>
+          <a href="/profile"><button type="submit" class="btn btn-primary btn-xs profile">Profile</button></a>
+          <a href="/calendar"><button type="submit" class="btn btn-primary btn-xs calendar">Calendar</button></a>
+          <a href="/espp"><button type="submit" class="btn btn-primary btn-xs espp">ESPP</button></a>
+       </div>
+     <% if(typeof(errors) != 'undefined' ) { %>
+     <%= errors[0] %>
+     <% for (var x in errors) { %>
+      <h3><%= errors[x].message %></h3>
+     <% } %>
+ <% } %>
+<form action='/users' method='post'>
+    First Name:
+   <input type='text' name='firstname' class="form-control" id="exampleInputEmail1" placeholder="First Name"><br>
+    Last Name:
+    <input type='text' name='lastname' class="form-control" id="exampleInputEmail1" placeholder="Last Name"><br>
+      Password:
+    <input type='password' name='password' class="form-control" id="exampleInputEmail1" placeholder="Password"><br>
+      Date of Birth:
+    <input type='date' name='dob' class="form-control" id="exampleInputEmail1" placeholder="Date of Birth"><br>
+      Email:
+    <input type='text' name='email' class="form-control" id="exampleInputEmail1" placeholder="Email"><br>
+    <select class="form-control" name="department" id="deparment">
+<option>Engineering</option>
+<option>Operations</option>
+<option>Retail/International Sales</option>
+<option>HR</option>
+<option>National Home Center</option>
+<option>Order Desk/Accounting</option>
+<option>Quality</option>
+<option>Marketing</option>
+
+
+      </select>
+    <input type="hidden" name="emailval" value="false">
+    <input type="hidden" name="role" value="user">
+    <button type="submit" class="btn btn-default">Submit</button>
+
+
+    </div>
+
+
+  </body>
+</html>
+
+
+    
