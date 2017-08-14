@@ -7,12 +7,15 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+<script>
+   var socket = io();
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
 <title>CTS Intranet</title>
-    <script>
-        $( function() {
-          $( "#accordion" ).accordion();
-        } );
-    </script>
     <style>
       @media only screen and (min-device-width: 768px) {
 
@@ -31,7 +34,7 @@
       </div>
       <div class="rightbar">
     
-
+      <div class="circle"><p class="text-center"></p></div>
       <img src ="/images/notifications.png" class="notifications">
       <span class="title"> CTS Intranet</span>
 
@@ -49,7 +52,7 @@
           <a href="/forms"><img src="/images/formsbutton.png" class="button"></a>
           <a href ="/hr"><img src="/images/hrbutton.png" class="button"></a>
           <a href ="/news"><img src="/images/newsbutton.png" class="button"></a>
-          <a href ="/users"><img src="/images/directorybutton.png" class="button"></a>
+          <a href ="/regularusers"><img src="/images/directorybutton.png" class="button"></a>
         </div>
     </div>
     <!-- <div id="accordion">

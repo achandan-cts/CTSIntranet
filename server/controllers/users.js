@@ -7,7 +7,15 @@ module.exports={
 	find: function(req,res){
 		User.find({}, function(err, users) {
 			var users_array = users; console.log(users)
-			res.render('users', {users: users_array})
+			res.render('users', {users: users_array, req: req})
+			})   
+	},
+
+	findsort: function(req,res){
+		console.log("this", req.body.departmentsort)
+		User.find({department: req.body.departmentsort}, function(err, users) {
+			var users_array = users; console.log(users)
+			res.render('users', {users: users_array, req:req, departmentsort:req.body.departmentsort})
 			})   
 	},
 
@@ -15,7 +23,7 @@ module.exports={
 
 		User.find({}, function(err, users) {
 			var users_array = users; console.log(users)
-			res.render('useradmin', {users: users_array})
+			res.render('useradmin', {users: users_array, req: req})
 			})   
 
 	},

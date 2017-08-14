@@ -8,7 +8,8 @@ var upload = multer({ dest: '../client/static/uploads/' })
 
 // invoke var express and store the resulting application in var app
 var app = express();
-
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 app.use(session({secret: 'ac91chandan'}));
 
 var path = require("path");
@@ -40,8 +41,16 @@ var routes_setter = require('./server/config/routes.js');
 // invoke the function stored in routes_setter and pass it the "app" variable
 routes_setter(app);
 
+io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});
+
 // Tell the express app to listen on port 8000
-app.listen(8000, function() {
+http.listen(8000, function() {
   console.log("listening on port 8000");
 })
 // this line will almost always be at the end of your server.js file (we only tell the server to listen after we have set up all of our rules)
+

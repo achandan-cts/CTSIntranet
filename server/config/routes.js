@@ -53,6 +53,29 @@ module.exports= function(app){
 		
 	})
 
+	app.get("/adminusers", function (req, res){
+	if(req.session.loggedin === "true"){
+
+		if(req.session.permissions=="user"){
+		users.find(req,res)}
+		else if(req.session.permissions=="Admin"){
+			users.findadmin(req,res)
+		}
+
+	}
+	else{res.render('index', {title: "my Express project"})}
+		
+	})
+
+	app.get("/regularusers", function (req, res){
+	if(req.session.loggedin === "true"){
+		req.body.departmentsort=req.session.department;
+		users.findsort(req,res)}
+
+	else{res.render('index', {title: "my Express project"})}
+		
+	})
+
 	app.get("/hr", function (req, res){
 			if(req.session.loggedin === "true"){
 
@@ -174,7 +197,11 @@ module.exports= function(app){
 
 	app.get("/logout", function (req, res){
 
-		req.session.loggedin = "false"
+		req.session.loggedin = "false";
+		req.session.permissions = "none"
+		req.session.user = "none"
+		req.session.department = "none"
+
 		res.render('index', {title: "my Express project"})
 
 	
@@ -215,6 +242,11 @@ module.exports= function(app){
 	app.post('/adminusers', function(req, res) {
  		console.log("POST DATA", req.body);
 		users.update(req,res)	
+	})
+
+	app.post('/filterusers', function(req, res) {
+ 		console.log("POST DATA", req.body);
+		users.findsort(req,res)	
 	})
 
 	app.post('/changepass', function(req, res) {

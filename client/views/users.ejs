@@ -9,15 +9,80 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>CTS Intranet</title>
     <script>
-        $( function() {
-          $( "#accordion" ).accordion();
-        } );
+    $(document).ready(function() {
+      $('#departmentsort').on('change', function() {
+        var $form = $(this).closest('form');
+        $form.find('input[type=submit]').click();
+      });
+    });
+        // console.log(users);
     </script>
 
     <style type="text/css">
+            *{overflow-y: hidden;}
+           .container{width: 100%; float: right; display: inline-block; height: 100%; margin-top: 2%; padding: 0 0; overflow-x: auto;overflow-y: auto;}
+            .content{}
+            .table-responsive{display: inline; overflow-x: scroll;border:0px;}
+            /*.departmentsort{width:20%;display: inline-block;}*/
+            .departmentsort{    display: inline-block;
+    position: absolute;
+    left: 1%;
+    top: 21%;}
+            .profilepic{width:100px;}
+            .col{display:inline-block;}
+            /* centered columns styles */
+            .row-centered {
+                text-align:center;
+            }
+            .col-centered {
+                display:inline-block;
+                float:none;
+                /* reset the text-align */
+                text-align:left;
+                /* inline-block space fix */
+                margin-right:-4px;
+            }
+            button{background-color: transparent;border:0px;}
+            .adminlink{display: inline-block;
+    position: absolute;
+    right: 2%;
+    top: 21%;}
+            .hiddensubmit{visibility: hidden;}
+            .row{    margin-right: -15px;
+    margin-top: 5%;
+    width: 80%;
+    display: inline-block;
+    vertical-align: top;}
+
         @media only screen and (min-device-width: 768px) {
-            .content{    padding-left: 1%;
+            .container{width: 100%; float: right; display: inline-block; height: 100%; margin-top: 2%; }
+            .content{padding-left: 1%;
               padding-right: 1%;}
+            .table-responsive{display: inline;}
+            /*.departmentsort{width:20%;display: inline-block;}*/
+            .departmentsort{display: inline-block;position: absolute; left: 21%; top: 38%;}
+            .profilepic{width:100px;}
+            .col{display:inline-block;}
+            /* centered columns styles */
+            .row-centered {
+                text-align:center;
+            }
+            .col-centered {
+                display:inline-block;
+                float:none;
+                /* reset the text-align */
+                text-align:left;
+                /* inline-block space fix */
+                margin-right:-4px;
+            }
+            button{background-color: transparent;border:0px;}
+            .adminlink{display: inline-block;position: absolute; right: 22%; top: 38%;}
+            .hiddensubmit{visibility: hidden;}
+            .row{    margin-right: -15px;
+    margin-top: 5%;
+    width: 80%;
+    display: inline-block;
+    vertical-align: top;}
         }
 
     </style>
@@ -29,8 +94,7 @@
         <a href="/home"><img src="/images/logo.png" id="logo"></a>
       </div>
       <div class="rightbar">
-      <a href="/home"><button type="submit" class="btn btn-primary btn-xs home">Home</button></a>
-       <a href="/logout"><button type="submit" class="btn btn-default logout">Logout</button></a>
+      <div class="circle"><p class="text-center"></p></div>
        <img src ="/images/notifications.png" class="notifications">
       <span class="title"> CTS Intranet</span>
       </div>
@@ -43,8 +107,53 @@
             <a href="/calendar"><button type="submit" class="btn btn-primary btn-xs calendar">Calendar</button></a>
             <a href="/espp"><button type="submit" class="btn btn-primary btn-xs espp">ESPP</button></a>
        </div>
+        <a href="/adminusers" class="adminlink">
+        <% console.log(req.session); if(req.session.permissions==="Admin"){ %>
+        Admin
 
+        <% }%></a>
+    <div class="container">
+        <div class="departmentsort">
+            <form action='/filterusers' method='post'>
+            <select class="form-control" name="departmentsort" id="departmentsort">
+                <option <% var select="";if (req.body.departmentsort==="Engineering"){select="selected"}%><%= select %>>Engineering</option>
+                <option <% var select="";if (req.body.departmentsort==="Operations"){select="selected"}%><%= select %>>Operations</option>
+                <option <% var select="";if (req.body.departmentsort==="Retail/International Sales"){select="selected"}%><%= select %>>Retail/International Sales</option>
+                <option <% var select="";if (req.body.departmentsort==="HR"){select="selected"}%><%= select %>>HR</option>
+                <option <% var select="";if (req.body.departmentsort==="National Home Center"){select="selected"}%><%= select %>>National Home Center</option>
+                <option <% var select="";if (req.body.departmentsort==="Order Desk/Accounting"){select="selected"}%><%= select %>>Order Desk/Accounting</option>
+                <option <% var select="";if (req.body.departmentsort==="Quality"){select="selected"}%><%= select %>>Quality</option>
+                <option <% var select="";if (req.body.departmentsort==="Marketing"){select="selected"}%><%= select %>>Marketing</option>
+
+
+      </select>
+      <input  class="hiddensubmit" type="submit">
+            </form>
+
+
+    </div>
+      
     <div class="table-responsive">
+        <table class="table">
+         <thead>
+            <tr>
+                <th></th>
+                <th></th> 
+                <th></th>
+            </tr>
+        </thead>
+        
+        <% for(x in users){ %>
+        <tr>
+                <td><img class= "profilepic" src=<%= users[x].profilepic %> ></td>
+                <td><p class="profilename text-center"> <%= users[x].firstname + " " + users[x].lastname%> </p></td>
+                <td><%= users[x].email%></td>
+        </tr>
+            <% } %>
+        </div>
+    </div> 
+       </div>
+    <!-- <div class="table-responsive">
     <table class="table">
     <thead>
           <tr>
@@ -60,7 +169,22 @@
           </tr>
           </thead>
           <tbody>
-          <% for (var x in users) { %>
+          <% 
+          function uniq(a) {
+                return a.sort().filter(function(item, pos, ary) {
+                    return !pos || item != ary[pos - 1];
+                })
+            }
+
+          departments=[];
+          for(var x in users){
+            departments.push(users[x].department)
+            }
+            departments=uniq(departments);
+            console.log(departments)
+          
+
+          for (var x in users) { %>
           <tr>
         <td><%= users[x].firstname %></td>
         <td><%= users[x].lastname %></td>
@@ -74,7 +198,8 @@
           </tbody>
     </table>
     </div>
-    </div>
+   
+    -->
 
 
   </body>
